@@ -41,7 +41,7 @@
 
 
 
-<a href="<?php echo $base_url;?>/sale/salelist" class="btn btn-danger"  style="font-size: 20px;font-weight: bold; width: 200px;">
+<a href="<?php echo $base_url;?>/sale/salelist" class="btn btn-danger disabled"  style="font-size: 20px;font-weight: bold; width: 200px;">
 <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size: 90px;"></span><br /> <?=$lang_salereport?>	
 </a>
 

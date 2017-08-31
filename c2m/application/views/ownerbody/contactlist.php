@@ -38,7 +38,7 @@
 			<th><?=$lang_cusgrade?></th>
 			<th><?=$lang_cusproductservice?></th>
 			<th><?=$lang_cusreasonbuy?></th>
-			<th><?=$lang_cusreasonnotnuy?></th>
+			<th><?=$lang_cusreasonnotbuy?></th>
 			<th><?=$lang_day?></th>
 			
 		</tr>
