@@ -7,7 +7,7 @@
         parent::__construct();
          $this->load->library('session');
         
-        $this->base_url = 'http://localhost/c2m';
+        $this->base_url = 'https://pos.kp-storeroom.com/c2m';
         $this->base_lang = 'th';
         
 
