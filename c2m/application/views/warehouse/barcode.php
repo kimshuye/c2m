@@ -11,10 +11,11 @@
         }
     .labelx{
         /* Avery 5160 labels -- CSS and HTML by MM at Boulder Information Services */
-        width: 2.025in; /* plus .6 inches from padding */
+        width: 2.025in;  /* plus .6 inches from padding */
         /*height: .875in;  plus .125 inches from padding */
-        padding: .125in .3in 0;
+        padding: .025in .4in 0;
         margin-right: .125in; /* the gutter */
+        padding-left: 0px;
 
         float: left;
 
@@ -42,11 +43,10 @@
         left: 0;
         top: 0;
     }
+    svg {
+      margin: 20px;
+    }
     </style>
-
-
-
-
 
 	<title>Barcode <?php if(isset($_GET['product_name'])){ echo $_GET['product_name']; } ?> </title>
 </head>
@@ -58,22 +58,70 @@
 
 <div id="section-to-print">
 
-<?php
+<!-- <?php
 for($i=1;$i<=27;$i++){
-    
-     echo '<div class="labelx">
- <font size="2">	';  if(isset($_GET['product_name'])){ echo $_GET['product_name']; }  echo '</font>
-<br />
-     <img src="'.$base_url.'/warehouse/barcode/png?barcode=	';  if(isset($_GET['product_code'])){ echo $_GET['product_code']; } echo '"> ';
-echo '<br />
-<center>
-<span style="font-weight:bold;font-size:25px;">
-';
+    echo 
+        '<div class="labelx">
+        <font size="2">';
+            if(isset($_GET['product_name']))
+                { echo $_GET['product_name']; }  
+            echo '</font><br />
+                <img src="'.$base_url.'/warehouse/barcode/png?barcode=';
+                if(isset($_GET['product_code']))
+                    { echo $_GET['product_code']; } 
+                echo '">';
+    echo '<br />
+        <center>
+        <span style="font-weight:bold;font-size:25px;">
+        ';
+
 if(isset($_GET['product_price'])){ echo $_GET['product_price']; }
       echo '
      </span></center></div>';
- }
-  ?>
+}
+  ?> -->
+  
+
+<?php
+
+for($i=1;$i<=27;$i++){ ?>
+
+    <div class="labelx">
+        <font size="2">
+            <?php if(isset($_GET['product_name'])) echo $_GET['product_name']; ?>            
+        </font><br>
+        <svg id="ean-13-<?php if(isset($_GET['product_code'])){ echo $_GET['product_code']; } ?>" ></svg>
+        
+        <br>
+            <center>
+                <span style="font-weight:bold;font-size:25px;">
+                    <?php if(isset($_GET['product_price'])){ echo $_GET['product_price']; } ?>
+                </span>
+            </center>
+    </div>
+<?php
+}
+?>
+
+<script src='../js/JsBarcode.all.min.js'></script>
+
+<script>
+
+<?php
+
+for($i=1;$i<=27;$i++){ ?>
+
+    JsBarcode(
+        "#ean-13-<?php if(isset($_GET['product_code'])){ echo $_GET['product_code']; } ?>"
+        , "<?php if(isset($_GET['product_code'])){ echo $_GET['product_code']; } ?>"
+        , {format: "ean13"}
+    );
+
+<?php
+}
+?>
+
+</script>
 
 </div>
 
