@@ -59,7 +59,7 @@
 <div id="section-to-print">
 
 <!-- <?php
-for($i=1;$i<=27;$i++){
+for($i=1;$i<=15;$i++){
     echo 
         '<div class="labelx">
         <font size="2">';
@@ -84,7 +84,7 @@ if(isset($_GET['product_price'])){ echo $_GET['product_price']; }
 
 <?php
 
-for($i=1;$i<=27;$i++){ ?>
+for($i=1;$i<=15;$i++){ ?>
 
     <div class="labelx">
         <font size="2">
