@@ -44,9 +44,7 @@ $data['title'] = 'barcode';
         require_once('./application/libraries/Zend/Barcode.php');
         //generate barcode
         //Zend_Barcode::render('code128', 'image', array('text'=>$code), array());
-
-
-        Zend_Barcode::render('code128', 'svg', array('text' => $code), array());
+        Zend_Barcode::render('ean13', 'svg', array('text' => $code), array());
    
 
     }

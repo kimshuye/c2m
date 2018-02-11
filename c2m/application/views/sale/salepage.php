@@ -1,4 +1,8 @@
 
+<style type="text/css">
+
+</style>
+
 <div class="col-md-12 col-sm-12 lodingbefor" ng-app="firstapp" ng-controller="Index" style="display: none;">
 	
 
@@ -78,8 +82,8 @@
 			
 
 			<td align="right" style="width: 150px;">{{x.product_price | number:2}}</td>
-			<td align="right" style="width: 100px;"><input type="" placeholder="<?=$lang_discount?>" class="form-control" ng-model="x.product_price_discount" style="text-align: right;"></td>
-			<td align="right" style="width: 80px;"><input type="" placeholder="<?=$lang_qty?>" class="form-control" ng-model="x.product_sale_num" style="text-align: right;width: 80px;"></td>
+			<td align="right" style="width: 100px;"><input type="number" id="lang_discount" placeholder="<?=$lang_discount?>" value="1.00" class="form-control" ng-model="x.product_price_discount" style="text-align: right;"></td>
+			<td align="right" style="width: 80px;"><input type="number" id="lang_qty" placeholder="<?=$lang_qty?>" value="1" class="form-control" ng-model="x.product_sale_num" style="text-align: right;width: 80px;"></td>
 			
 			<td style="width: 50px;" align="right">{{(x.product_price - x.product_price_discount) * x.product_sale_num | number:2 }}</td>
 			<td><button class="btn btn-danger" ng-click="Deletepush($index)">ลบ</button></td>
@@ -1151,6 +1155,13 @@ $scope.getlist();
 $('.lodingbefor').css('display','block');
 
 });
+
+document.getElementById("lang_discount").addEventListener("wheel", myFunction);
+document.getElementById("lang_qty").addEventListener("wheel", myFunction);
+
+function myFunction() { 
+	
+}
 
 
 </script>

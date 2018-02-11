@@ -58,29 +58,37 @@
 
 <div id="section-to-print">
 
-<!-- <?php
-for($i=1;$i<=15;$i++){
-    echo 
-        '<div class="labelx">
-        <font size="2">';
-            if(isset($_GET['product_name']))
-                { echo $_GET['product_name']; }  
-            echo '</font><br />
-                <img src="'.$base_url.'/warehouse/barcode/png?barcode=';
-                if(isset($_GET['product_code']))
-                    { echo $_GET['product_code']; } 
-                echo '">';
-    echo '<br />
-        <center>
-        <span style="font-weight:bold;font-size:25px;">
-        ';
+<!--
 
-if(isset($_GET['product_price'])){ echo $_GET['product_price']; }
-      echo '
-     </span></center></div>';
+<?php
+
+for($i=1;$i<=15;$i++){ ?>
+
+    <div class="labelx">
+        <font size="2">
+            <?php if(isset($_GET['product_name'])) { echo $_GET['product_name']; }  ?>
+        </font><br />
+            <img 
+                src="<?php echo $base_url; ?>/warehouse/barcode/png?barcode=
+                <?php if(isset($_GET['product_code'])) { echo $_GET['product_code']; } ?>
+                " >
+        <br />
+        <center>
+            <span style="font-weight:bold;font-size:25px;"> 
+
+        <?php if(isset($_GET['product_price'])){ echo $_GET['product_price']; } ?>
+            </span>
+        </center>
+    </div>
+
+<?php
+
 }
-  ?> -->
-  
+
+?>
+
+-->
+
 
 <?php
 
@@ -122,6 +130,8 @@ for($i=1;$i<=27;$i++){ ?>
 ?>
 
 </script>
+
+
 
 </div>
 

@@ -26,11 +26,8 @@
 		<td>{{$index+1}}</td>
 			<td>{{x.name}}</td>
 			<td>{{x.user_email}}</td>
-			<td>{{x.user_password}}</td>
-			<td>
-			{{x.owner_name}}
-			
-			</td>
+			<td><input type="password" value="{{x.user_password}}" style="width:100px; border:none; text-align: center;" disabled readonly></td>
+			<td>{{x.owner_name}}</td>
 			<td>
 				<button class="btn btn-warning btn-xs" ng-click="Openmodaledit(x)"><?=$lang_edit?></button>
 			</td>
