@@ -227,13 +227,66 @@ $today = date('d-m-Y',time());
 
 $querynum = $this->db->query('SELECT *, from_unixtime(adddate,"%d-%m-%Y %H:%i:%s") as adddate
     FROM sale_list_header  
-    WHERE owner_id="'.$_SESSION['owner_id'].'"  AND cus_name LIKE "%'.$data['searchtext'].'%" AND from_unixtime(adddate,"%d-%m-%Y")="'.$today.'"  OR owner_id="'.$_SESSION['owner_id'].'" AND sale_runno = "'.$data['searchtext'].'"
+    WHERE owner_id="'.$_SESSION['owner_id'].'"  AND cus_name LIKE "%'.$data['searchtext'].'%" AND ( from_unixtime(adddate,"%d-%m-%Y")="'.$today.'" ) OR owner_id="'.$_SESSION['owner_id'].'" AND sale_runno = "'.$data['searchtext'].'"
     ORDER BY ID DESC');
 
 
 $query = $this->db->query('SELECT *, from_unixtime(adddate,"%d-%m-%Y %H:%i:%s") as adddate
     FROM sale_list_header  
-    WHERE owner_id="'.$_SESSION['owner_id'].'"  AND cus_name LIKE "%'.$data['searchtext'].'%" AND from_unixtime(adddate,"%d-%m-%Y")="'.$today.'" OR owner_id="'.$_SESSION['owner_id'].'" AND sale_runno = "'.$data['searchtext'].'"
+    WHERE owner_id="'.$_SESSION['owner_id'].'"  AND cus_name LIKE "%'.$data['searchtext'].'%" AND ( from_unixtime(adddate,"%d-%m-%Y")="'.$today.'" ) OR owner_id="'.$_SESSION['owner_id'].'" AND sale_runno = "'.$data['searchtext'].'"
+    ORDER BY ID DESC LIMIT '.$start.' , '.$perpage.' ');
+$encode_data = json_encode($query->result(),JSON_UNESCAPED_UNICODE );
+
+
+$num_rows = $querynum->num_rows();
+
+$pageall = ceil($num_rows/$perpage);
+
+
+
+
+$json = '{"list": '.$encode_data.',
+"numall": '.$num_rows.',"perpage": '.$perpage.', "pageall": '.$pageall.'}';
+
+return $json;
+
+
+        }
+
+public function Getmonth($data)
+        {
+
+
+ $perpage = $data['perpage'];
+
+            if($data['page'] && $data['page'] != ''){
+$page = $data['page'];
+            }else{
+          $page = '1';      
+            }
+
+
+            $start = ($page - 1) * $perpage;
+
+$today = date('d-m-Y',time());
+$m = date("m", time());
+$y = date("Y", time());
+
+$starttday = mktime(0, 0, 0,01, 01, $y);
+$lastday = mktime(0, 0, 0, 12, -31, $y);
+
+$starttday = date($starttday); 
+$lastday = date($lastday); 
+
+$querynum = $this->db->query('SELECT *, from_unixtime(adddate,"%d-%m-%Y %H:%i:%s") as adddate
+    FROM sale_list_header  
+    WHERE owner_id="'.$_SESSION['owner_id'].'"  AND cus_name LIKE "%'.$data['searchtext'].'%" AND ( adddate BETWEEN from_unixtime('.$starttday.',"%d-%m-%Y %H:%i:%s") AND from_unixtime('.$lastday .',"%d-%m-%Y %H:%i:%s") ) OR owner_id="'.$_SESSION['owner_id'].'" AND sale_runno = "'.$data['searchtext'].'"
+    ORDER BY ID DESC');
+
+
+$query = $this->db->query('SELECT *, from_unixtime(adddate,"%d-%m-%Y %H:%i:%s") as adddate
+    FROM sale_list_header  
+    WHERE owner_id="'.$_SESSION['owner_id'].'"  AND cus_name LIKE "%'.$data['searchtext'].'%" AND ( adddate BETWEEN from_unixtime('.$starttday.',"%d-%m-%Y %H:%i:%s") AND from_unixtime('.$lastday .',"%d-%m-%Y %H:%i:%s") ) OR owner_id="'.$_SESSION['owner_id'].'" AND sale_runno = "'.$data['searchtext'].'"
     ORDER BY ID DESC LIMIT '.$start.' , '.$perpage.' ');
 $encode_data = json_encode($query->result(),JSON_UNESCAPED_UNICODE );
 
@@ -254,6 +307,5 @@ return $json;
         }
 
 
+}
 
-
-    }

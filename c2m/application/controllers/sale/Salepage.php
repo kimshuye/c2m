@@ -77,6 +77,14 @@ echo  $this->salepage_model->Gettoday($data);
         
 	}
 
+	function Getmonth()
+    {
+
+$data = json_decode(file_get_contents("php://input"),true);
+echo  $this->salepage_model->Getmonth($data);
+        
+	}
+
 
 function Savesale()
     {

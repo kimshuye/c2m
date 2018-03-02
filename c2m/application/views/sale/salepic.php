@@ -1185,7 +1185,7 @@ $scope.getlist = function(searchtext,page,perpage){
    var	perpage = '10';
    }
 
-   $http.post("Salepage/gettoday",{
+   $http.post("Salepage/getmonth",{
 searchtext:searchtext,
 page: page,
 perpage: perpage
