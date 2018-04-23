@@ -36,7 +36,7 @@ $query = $this->db->query('SELECT
 
     FROM wh_product_list as wpl 
     LEFT JOIN owner as ow on ow.owner_id=wpl.owner_id
-    WHERE wpl.store_id="'.$_SESSION['store_id'].'" ORDER BY product_priceall DESC');
+    WHERE wpl.store_id="'.$_SESSION['store_id'].'" ORDER BY product_numall DESC');
 
 
 $query2 = $this->db->query('SELECT 
@@ -52,7 +52,7 @@ $query2 = $this->db->query('SELECT
 
     FROM wh_product_list as wpl 
 LEFT JOIN owner as ow on ow.owner_id=wpl.owner_id
-    WHERE wpl.store_id="'.$_SESSION['store_id'].'" ORDER BY product_priceall DESC');
+    WHERE wpl.store_id="'.$_SESSION['store_id'].'" ORDER BY product_numall DESC');
 
 
 if($owner_id=='0'){

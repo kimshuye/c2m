@@ -153,7 +153,8 @@ $scope.daylist = data;
 
 $scope.datac = [];
 angular.forEach($scope.daylist,function(item){
-$scope.datac.push({count: item.product_priceall,name: item.product_name});
+// $scope.datac.push({count: item.product_priceall,name: item.product_name});
+$scope.datac.push({count: item.product_numall,name: item.product_name});
 });
 
 $scope.Chart($scope.datac);
@@ -279,7 +280,7 @@ Morris.Bar({
   data: datac,
   xkey: 'name',
   ykeys: ['count'],
-  labels: ['<?=$lang_revenue?>'],
+  labels: ['<?=$lang_saletotal?>'],
   barColors: function (row, series, type) {
     if (type === 'bar') {
      var letters = '0123456789ABCDEF';
