@@ -154,7 +154,28 @@
 				<form id="uploadImg"  enctype="multipart/form-data" method="POST">
 
 <?=$lang_barcode?>
-<input type="text" name="product_code"  placeholder="รหัสสินค้า" class="form-control">
+<p></p>
+<input type="text" id="id1" placeholder="รหัสประเทศ" class="" value="000" maxlength="3" style="width: 50px;" onkeyup="myFunction()">
+<input type="text" id="id2" placeholder="รหัสผู้ผลิต" class="" value="0000" maxlength="4" style="width: 65px;" onkeyup="myFunction()">
+<input type="text" id="id3" placeholder="รหัสสินค้า" class="" value="00000" maxlength="5" style="width: 80px;" onkeyup="myFunction()">
+<input type="text" id="id4" placeholder="sum" class="" value="0" maxlength="1" style="width: 35px;" onkeyup="myFunction()" disabled>
+<script>
+function myFunction() {
+    var x = document.getElementById("id1").value +
+    		document.getElementById("id2").value +
+    		document.getElementById("id3").value  ;
+    var even = (subInt(x, 2) + subInt(x, 4) + subInt(x, 6) + subInt(x, 8) + subInt(x, 10) + subInt(x, 12) ) * 3;
+    var odd = (subInt(x, 1) + subInt(x, 3) + subInt(x, 5) + subInt(x, 7) + subInt(x, 9) + subInt(x, 11) );
+    var result = 10 - ( ( even + odd ) % 10);
+    document.getElementById("id4").value = result.toString();
+    document.getElementsByName("product_code")[0].value = x + result.toString();
+}
+function subInt(txt,pos){
+	return parseInt(txt.substring(pos-1, pos));
+}
+</script>
+<p></p>
+<input type="text" name="product_code"  placeholder="รหัสสินค้า" class="form-control" onkeyup="myFunction()">
 <p></p>
 <?=$lang_picproduct?>
 <input type="file" name="product_image" accept="image/*" class="form-control" value="">
