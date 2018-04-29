@@ -43,7 +43,7 @@
 			<td ng-if="selectpage!='1'" class="text-center">{{($index+1)+(perpage*(selectpage-1))}}</td>
 			<td align="center">{{x.product_code}}</td>
 <td align="center">
-<a href="<?php echo $base_url; ?>/warehouse/barcode?product_code={{x.product_code}}&product_name={{x.product_name}}&product_price={{x.product_price | number:2}}" class="btn btn-xs btn-default" target="_blank"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Barcode</a></td>
+<a href="<?php echo $base_url; ?>/warehouse/barcode?sheet=1&product_code={{x.product_code}}&product_name={{x.product_name}}&product_price={{x.product_price | number:2}}" class="btn btn-xs btn-default" target="_blank"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Barcode</a></td>
 
 			<td>{{x.product_name}}</td>
 			<td>{{x.product_category_name}}</td>

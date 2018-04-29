@@ -67,7 +67,7 @@
 {{x.product_code}}
 </td>
 <td align="center">
-<a href="<?php echo $base_url; ?>/warehouse/barcode?product_code={{x.product_code}}&product_name={{x.product_name}}&product_price={{x.product_price | number:2}}" class="btn btn-xs btn-default" target="_blank"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Barcode</a></td>
+<a href="<?php echo $base_url; ?>/warehouse/barcode?sheet=1&product_code={{x.product_code}}&product_name={{x.product_name}}&product_price={{x.product_price | number:2}}" class="btn btn-xs btn-default" target="_blank"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span> Barcode</a></td>
 
 <td align="center">
 <img ng-if="x.product_image!=''" ng-src="<?php echo $base_url;?>/{{x.product_image}}" width="70px" height="70px;">
@@ -155,7 +155,7 @@
 
 <?=$lang_barcode?>
 <p></p>
-<input type="text" id="id1" placeholder="รหัสประเทศ" class="" value="000" maxlength="3" style="width: 50px;" onkeyup="myFunction()">
+<input type="text" id="id1" placeholder="รหัสประเทศ" class="" value="885" maxlength="3" style="width: 50px;" onkeyup="myFunction()">
 <input type="text" id="id2" placeholder="รหัสผู้ผลิต" class="" value="0000" maxlength="4" style="width: 65px;" onkeyup="myFunction()">
 <input type="text" id="id3" placeholder="รหัสสินค้า" class="" value="00000" maxlength="5" style="width: 80px;" onkeyup="myFunction()">
 <input type="text" id="id4" placeholder="sum" class="" value="0" maxlength="1" style="width: 35px;" onkeyup="myFunction()" disabled>
