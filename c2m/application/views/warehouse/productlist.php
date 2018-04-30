@@ -175,7 +175,7 @@ function subInt(txt,pos){
 }
 </script>
 <p></p>
-<input type="text" name="product_code"  placeholder="รหัสสินค้า" class="form-control" onkeyup="myFunction()">
+<input type="text" name="product_code"  placeholder="รหัสสินค้า" class="form-control"  >
 <p></p>
 <?=$lang_picproduct?>
 <input type="file" name="product_image" accept="image/*" class="form-control" value="">
