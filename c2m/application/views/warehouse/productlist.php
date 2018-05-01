@@ -155,25 +155,11 @@
 
 <?=$lang_barcode?>
 <p></p>
-<input type="text" id="id1" placeholder="รหัสประเทศ" class="" value="885" maxlength="3" style="width: 50px;" onkeyup="myFunction()">
-<input type="text" id="id2" placeholder="รหัสผู้ผลิต" class="" value="0000" maxlength="4" style="width: 65px;" onkeyup="myFunction()">
-<input type="text" id="id3" placeholder="รหัสสินค้า" class="" value="00000" maxlength="5" style="width: 80px;" onkeyup="myFunction()">
-<input type="text" id="id4" placeholder="sum" class="" value="0" maxlength="1" style="width: 35px;" onkeyup="myFunction()" disabled>
-<script>
-function myFunction() {
-    var x = document.getElementById("id1").value +
-    		document.getElementById("id2").value +
-    		document.getElementById("id3").value  ;
-    var even = (subInt(x, 2) + subInt(x, 4) + subInt(x, 6) + subInt(x, 8) + subInt(x, 10) + subInt(x, 12) ) * 3;
-    var odd = (subInt(x, 1) + subInt(x, 3) + subInt(x, 5) + subInt(x, 7) + subInt(x, 9) + subInt(x, 11) );
-    var result = 10 - ( ( even + odd ) % 10);
-    document.getElementById("id4").value = result.toString();
-    document.getElementsByName("product_code")[0].value = x + result.toString();
-}
-function subInt(txt,pos){
-	return parseInt(txt.substring(pos-1, pos));
-}
-</script>
+<input type="text" id="id1" placeholder="รหัสประเทศ" class="" value="800" maxlength="3" style="width: 50px;" onkeyup="genBarcode()">
+<input type="text" id="id2" placeholder="รหัสผู้ผลิต" class="" value="0000" maxlength="4" style="width: 65px;" onkeyup="genBarcode()">
+<input type="text" id="id3" placeholder="รหัสสินค้า" class="" value="00000" maxlength="5" style="width: 80px;" onkeyup="genBarcode()">
+<input type="text" id="id4" placeholder="sum" class="" value="0" maxlength="1" style="width: 35px;" onkeyup="genBarcode()" disabled>
+
 <p></p>
 <input type="text" name="product_code"  placeholder="รหัสสินค้า" class="form-control"  >
 <p></p>
@@ -248,6 +234,12 @@ Supplier
 
 <input type="hidden" name="product_id" id="product_id">
 <?=$lang_barcode?>
+<p></p>
+<input type="text" id="id5" placeholder="รหัสประเทศ" class="" value="800" maxlength="3" style="width: 50px;" onkeyup="genBarcodeEdit()">
+<input type="text" id="id6" placeholder="รหัสผู้ผลิต" class="" value="0000" maxlength="4" style="width: 65px;" onkeyup="genBarcodeEdit()">
+<input type="text" id="id7" placeholder="รหัสสินค้า" class="" value="00000" maxlength="5" style="width: 80px;" onkeyup="genBarcodeEdit()">
+<input type="text" id="id8" placeholder="sum" class="" value="0" maxlength="1" style="width: 35px;" onkeyup="genBarcodeEdit()" disabled>
+
 <input type="text" name="product_code" id="product_code" placeholder="<?=$lang_barcode?>" class="form-control">
 <p></p>
 <input type="hidden" name="product_image2" id="product_image2">
@@ -350,6 +342,31 @@ Supplier
 
 	</div>
 
+<script>
+function genBarcode() {
+    var x = document.getElementById("id1").value +
+    		document.getElementById("id2").value +
+    		document.getElementById("id3").value  ;
+    var even = (subInt(x, 2) + subInt(x, 4) + subInt(x, 6) + subInt(x, 8) + subInt(x, 10) + subInt(x, 12) ) * 3;
+    var odd = (subInt(x, 1) + subInt(x, 3) + subInt(x, 5) + subInt(x, 7) + subInt(x, 9) + subInt(x, 11) );
+    var result = 10 - ( ( even + odd ) % 10);
+    document.getElementById("id4").value = result.toString();
+    document.getElementsByName("product_code")[0].value = x + result.toString();
+}
+function genBarcodeEdit() {
+    var x = document.getElementById("id5").value +
+    		document.getElementById("id6").value +
+    		document.getElementById("id7").value  ;
+    var even = (subInt(x, 2) + subInt(x, 4) + subInt(x, 6) + subInt(x, 8) + subInt(x, 10) + subInt(x, 12) ) * 3;
+    var odd = (subInt(x, 1) + subInt(x, 3) + subInt(x, 5) + subInt(x, 7) + subInt(x, 9) + subInt(x, 11) );
+    var result = 10 - ( ( even + odd ) % 10);
+    document.getElementById("id8").value = result.toString();
+    document.getElementsByName("product_code")[1].value = x + result.toString();
+}
+function subInt(txt,pos){
+	return parseInt(txt.substring(pos-1, pos));
+}
+</script>
 
 	<script>
 var app = angular.module('firstapp', []);
