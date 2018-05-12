@@ -235,10 +235,10 @@ Supplier
 <input type="hidden" name="product_id" id="product_id">
 <?=$lang_barcode?>
 <p></p>
-<input type="text" id="id5" placeholder="รหัสประเทศ" class="" value="800" maxlength="3" style="width: 50px;" onkeyup="genBarcodeEdit()">
-<input type="text" id="id6" placeholder="รหัสผู้ผลิต" class="" value="0000" maxlength="4" style="width: 65px;" onkeyup="genBarcodeEdit()">
-<input type="text" id="id7" placeholder="รหัสสินค้า" class="" value="00000" maxlength="5" style="width: 80px;" onkeyup="genBarcodeEdit()">
-<input type="text" id="id8" placeholder="sum" class="" value="0" maxlength="1" style="width: 35px;" onkeyup="genBarcodeEdit()" disabled>
+<input type="text" id="id5" placeholder="รหัสประเทศ" class=""  maxlength="3" style="width: 50px;" onkeyup="genBarcodeEdit()">
+<input type="text" id="id6" placeholder="รหัสผู้ผลิต" class=""  maxlength="4" style="width: 65px;" onkeyup="genBarcodeEdit()">
+<input type="text" id="id7" placeholder="รหัสสินค้า" class=""  maxlength="5" style="width: 80px;" onkeyup="genBarcodeEdit()">
+<input type="text" id="id8" placeholder="sum" class=""  maxlength="1" style="width: 35px;" onkeyup="genBarcodeEdit()" disabled>
 
 <input type="text" name="product_code" id="product_code" placeholder="<?=$lang_barcode?>" class="form-control">
 <p></p>
@@ -515,6 +515,13 @@ $("#product_location").val(x.product_location);
 $("#supplier_id").val(x.supplier_id);
 
 $scope.product_image = x.product_image;
+
+var barcode = x.product_code;
+
+$("#id5").val(barcode.substring(0,3));
+$("#id6").val(barcode.substring(3,7));
+$("#id7").val(barcode.substring(7,12));
+$("#id8").val(barcode.substring(12,13));
 
 };
 

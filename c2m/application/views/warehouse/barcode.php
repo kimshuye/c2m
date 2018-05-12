@@ -153,7 +153,7 @@ for($i=1;$i<=15;$i++){ ?>
 
 $sheet=(isset($_GET['sheet'])) ? $_GET['sheet']:15;
 
-for($i=1;$i<=$sheet;$i++){ ?>
+for($i=0;$i<$sheet;$i++){ ?>
 
     <div class="labelx" style="padding-right: 60px;" >
         <font size="3">
@@ -181,7 +181,7 @@ for($i=1;$i<=$sheet;$i++){ ?>
 
 <?php
 
-for($i=1;$i<=27;$i++){ ?>
+for($i=0;$i<27;$i++){ ?>
 
     JsBarcode(
         "#ean-13-<?php if(isset($_GET['product_code'])){ echo $_GET['product_code']; } ?>"

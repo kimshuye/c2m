@@ -20,7 +20,7 @@ class Barcode extends MY_Controller {
 
 	public function index()
 	{
-$data['title'] = 'barcode';
+        $data['title'] = 'barcode';
         $this->barcodelayout('warehouse/barcode',$data);
 
          
